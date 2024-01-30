@@ -15,7 +15,7 @@ use Inertia\Inertia;
 |
 */
 //ccccccp
-//cc c'est moi
+//cc c'est kat
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
