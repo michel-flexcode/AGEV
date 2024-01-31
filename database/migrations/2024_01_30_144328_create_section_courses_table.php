@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('section_courses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('section_id');
+            $table->unsignedBigInteger('course_id');
             $table->timestamps();
+
+            // Foreign keys
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });
     }
 
