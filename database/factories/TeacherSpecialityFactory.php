@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Speciality;
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,8 @@ class TeacherSpecialityFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'teacher_id' => Teacher::factory(),
+            'speciality_id' => Speciality::factory(),
         ];
     }
 }
