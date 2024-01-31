@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,12 @@ class TeacherFactory extends Factory
      */
     public function definition(): array
     {
+        // option de test urgent : 'user_id' => User::factory(), // Crée un utilisateur prof
+        // Récupère un utilisateur qui n'est pas déjà étudiant
+        $user = User::whereDoesntHave('student')->inRandomOrder()->first();
+
         return [
-            //
+            'user_id' => $user->id,
         ];
     }
 }
