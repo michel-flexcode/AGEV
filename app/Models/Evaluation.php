@@ -14,9 +14,17 @@ class Evaluation extends Model
     protected $fillable = [
         'student_id',
         'course_id',
+        'quality_of_course_material',
+        'quality_of_exercises',
+        'interest_in_course',
+        'interaction_possibility',
+        'assessment_mode',
+        'links_with_other_courses',
+        'equipment_provided',
+        'practical_part',
+        'relationship_with_class_and_teacher',
         // Ajoutez d'autres champs spécifiques à Evaluation si nécessaire
     ];
-
     // Relation avec l'étudiant (belongsTo car une évaluation appartient à un étudiant)
     public function student(): BelongsTo
     {

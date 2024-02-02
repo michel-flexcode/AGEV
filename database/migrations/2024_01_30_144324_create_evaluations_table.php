@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('course_id');
             $table->unsignedTinyInteger('quality_of_course_material')->default(0); // qualité du support de cours
             $table->unsignedTinyInteger('quality_of_exercises')->default(0); // qualité des exercices proposés
             $table->unsignedTinyInteger('interest_in_course')->default(0); // intérêt que vous avez porté au cours
