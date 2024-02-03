@@ -40,9 +40,18 @@ return new class extends Migration
             $table->boolean('course_objectives_not_transmitted')->default(false); // Objectifs du cours non transmis (Question 11)
             $table->boolean('course_objectives_not_interested')->default(false); // Pas d'intérêt pour les objectifs du cours (Question 11)
             $table->string('course_objectives_other', 255)->nullable(); // Autres situations pour la connaissance des objectifs (Question 11)
-            $table->enum('objectives_achieved', ['oui', 'non', 'sans_avis'])->default('sans_avis');// Nouveau champ pour la question 12
-
-
+            $table->enum('objectives_achieved', ['oui', 'non', 'sans_avis'])->default('sans_avis');// Nouveau champ pour la (question 12)
+            $table->text('objectives_achieved_comment')->nullable();            // Nouveau champ pour la question 13
+            $table->unsignedTinyInteger('course_material_quantity')->default(2); // Évaluation de la quantité de matière vue en cours question 14
+            $table->enum('info_before_tests', ['insuffisant', 'faible', 'satisfaisant', 'bon', 'très_bon'])->default('satisfaisant');//question 15
+            $table->enum('clarity_of_test_grading', ['insuffisant', 'faible', 'satisfaisant', 'bon', 'très_bon'])->default('satisfaisant');//question 15
+            $table->enum('clarity_of_exam_grading', ['insuffisant', 'faible', 'satisfaisant', 'bon', 'très_bon'])->default('satisfaisant');//question 15
+            $table->enum('assessment_relevance', ['pas_du_tout', 'plutôt_non', 'sans_avis', 'plutôt_oui', 'tout_à_fait'])->default('sans_avis');//question 16
+            $table->text('assessment_relevance_comment')->nullable();//question 17
+            $table->boolean('solutions_provided_for_weaknesses')->default(false);//question 18
+            $table->text('most_appreciated_in_training')->nullable();//question 19
+            $table->text('least_appreciated_in_training')->nullable();//question 20
+            $table->text('general_remarks')->nullable(); //question 21
             $table->timestamps();
         });
     }
