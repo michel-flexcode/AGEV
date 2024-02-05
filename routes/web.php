@@ -33,4 +33,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    // Ajoutez cette nouvelle route pour la vue 'Evaluation'
+    Route::get('/Evaluation', function () {
+        // Vous pouvez passer des données supplémentaires à votre composant si nécessaire
+        return Inertia::render('Evaluation');
+    })->name('Evaluation');
 });
