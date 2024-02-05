@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -38,4 +39,6 @@ Route::middleware([
         // Vous pouvez passer des données supplémentaires à votre composant si nécessaire
         return Inertia::render('Evaluation');
     })->name('Evaluation');
+
+    Route::resource('/questions', QuestionController::class);
 });
