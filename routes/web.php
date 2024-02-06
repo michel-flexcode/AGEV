@@ -41,4 +41,5 @@ Route::middleware([
     })->name('Evaluation');
 
     Route::resource('/questions', QuestionController::class);
+    Route::get('questions/delete/{question}', [QuestionController::class, 'deletetest']);
 });
