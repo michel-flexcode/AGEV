@@ -7,6 +7,7 @@ import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
+import DangerButton from "@/Components/DangerButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import DialogModal from "@/Components/DialogModal.vue";
 import { ref } from "vue";
@@ -55,8 +56,9 @@ const closeModal = () => {
 
             {{ question.label }}
 
+            <!-- changer le nom de la fonction ici -->
             <button
-                @click.prevent="deleteQuestion(question.id)"
+                @click.prevent="confirmQuestionDeletion(question.id)"
                 class="btn btn-outline-danger"
             >
                 Supprimer
@@ -65,7 +67,7 @@ const closeModal = () => {
     </AppLayout>
     <!-- futur bouton -->
 
-    <!-- <DialogModal :show="confirmingQuestionDeletion" @close="closeModal">
+    <DialogModal :show="confirmingQuestionDeletion" @close="closeModal">
         <template #title> Supprimer la question </template>
 
         <template #content>
@@ -85,5 +87,5 @@ const closeModal = () => {
                 Supprimer
             </DangerButton>
         </template>
-    </DialogModal> -->
+    </DialogModal>
 </template>
