@@ -13,16 +13,13 @@ import DialogModal from "@/Components/DialogModal.vue";
 import { ref } from "vue";
 
 const props = defineProps({
+    questions: Array,
     question: Object,
-});
-
-const formCreateQuestion = useForm({
-    _method: "Delete",
 });
 
 //ajout bloc delete
 const confirmingQuestionDeletion = ref(false);
-const questionIdToDelete = ref(props.question.id);
+const questionIdToDelete = ref(null);
 const formDeleteQuestion = useForm("delete", {});
 
 const confirmQuestionDeletion = (id) => {
@@ -53,18 +50,34 @@ const closeModal = () => {
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Questions
             </h2>
-
-            {{ question.label }}
-
-            <button
-                @click.prevent="deleteQuestion(question.id)"
-                class="btn btn-outline-danger"
-            >
-                Supprimer
-            </button>
         </template>
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <ul>
+                            <li
+                                v-for="question in questions"
+                                :key="question.id"
+                            >
+                                {{ question.label }}
+
+                                <button
+                                    @click.prevent="
+                                        confirmQuestionDeletion(question.id)
+                                    "
+                                    class="btn btn-outline-danger"
+                                >
+                                    Supprimer
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </AppLayout>
-    <!-- futur bouton -->
 
     <DialogModal :show="confirmingQuestionDeletion" @close="closeModal">
         <template #title> Supprimer la question </template>
