@@ -44,4 +44,7 @@ Route::middleware([
 
     Route::resource('/questions', QuestionController::class);
     Route::resource('/teachers', TeacherController::class);
+
+    Route::get('questions/delete/{question}', [QuestionController::class, 'deletetest']);
+
 });

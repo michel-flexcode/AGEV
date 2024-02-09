@@ -89,6 +89,24 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+        session()->flash('flash.banner', 'La question a été détruite!');
+
+        return redirect()->route('questions.index');
+        // return Inertia::render('Questions/Delete', [
+        //     'question' => $question,
+        // ]);
+        // return redirect()->route('questions.index');
+    }
+
+    public function deletetest(Question $question)
+    {
+        // $question->delete();
+        // session()->flash('flash.banner', 'La question a été détruite!');
+
+        // return redirect()->route('questions.index');
+        return Inertia::render('Questions/Delete', [
+            'question' => $question,
+        ]);
     }
 }
