@@ -1,17 +1,10 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Link, router, useForm } from "@inertiajs/vue3";
-import ActionMessage from "@/Components/ActionMessage.vue";
-import FormSection from "@/Components/FormSection.vue";
-import InputError from "@/Components/InputError.vue";
-import InputLabel from "@/Components/InputLabel.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import DangerButton from "@/Components/DangerButton.vue";
-import TextInput from "@/Components/TextInput.vue";
 import DialogModal from "@/Components/DialogModal.vue";
 import { ref } from "vue";
-
 
 const props = defineProps({
     questions: Array,
@@ -43,12 +36,9 @@ const deleteQuestion = () => {
 const closeModal = () => {
     confirmingQuestionDeletion.value = false;
 };
-
-
 </script>
 
 <template>
-
     <AppLayout title="Questions">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -69,10 +59,19 @@ const closeModal = () => {
                         </Link>
 
                         <button
-                            @click.prevent="confirmQuestionDeletion(question.id)"
+                            @click.prevent="
+                                confirmQuestionDeletion(question.id)
+                            "
                             class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-opacity-50 transition ease-in-out duration-150"
                         >
                             Supprimer
+                        </button>
+                        <button
+                            class="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-opacity-50 transition ease-in-out duration-150"
+                        >
+                            <Link :href="route('questions.edit', question)">
+                                Edit
+                            </Link>
                         </button>
                     </li>
                 </ul>
