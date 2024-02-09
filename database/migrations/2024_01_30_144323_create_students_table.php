@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            // Add other fields specific to students
-            $table->unsignedBigInteger('user_id');
+            $table->string('name');
+            $table->string('surname');
+            $table->string('phone');
+            $table->string('email')->unique();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
-
-            // Foreign key
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

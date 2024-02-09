@@ -18,16 +18,10 @@ class TeacherFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), // Crée un utilisateur Student
+            'name' => $this->faker->word(),
+            'surname' => $this->faker->word(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->word(),
         ];
     }
 }
-
-
-
-     //     // Récupère un utilisateur qui n est pas déjà étudiant
-        // $user = User::whereDoesntHave('student')->inRandomOrder()->first();
-
-        // return [
-        //     'user_id' => $user->id,
-        // ];
