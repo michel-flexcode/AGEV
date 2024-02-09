@@ -12,6 +12,7 @@ import TextInput from "@/Components/TextInput.vue";
 import DialogModal from "@/Components/DialogModal.vue";
 import { ref } from "vue";
 
+
 const props = defineProps({
     questions: Array,
     question: Object,
@@ -42,9 +43,12 @@ const deleteQuestion = () => {
 const closeModal = () => {
     confirmingQuestionDeletion.value = false;
 };
+
+
 </script>
 
 <template>
+
     <AppLayout title="Questions">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -65,10 +69,8 @@ const closeModal = () => {
                         </Link>
 
                         <button
-                            @click.prevent="
-                                confirmQuestionDeletion(question.id)
-                            "
-                            class="btn btn-outline-danger"
+                            @click.prevent="confirmQuestionDeletion(question.id)"
+                            class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-opacity-50 transition ease-in-out duration-150"
                         >
                             Supprimer
                         </button>
