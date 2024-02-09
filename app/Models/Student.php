@@ -4,20 +4,30 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Student extends Model
 {
     use HasFactory;
-    protected $model = User::class;
+    //OLD polymorphism
+    // protected $model = User::class;
 
     protected $fillable = [
-        'user_id',
+        'name',
+        'surname',
+        'phone',
+        'email',
     ];
 
-    public function user(): MorphOne
+    public function StudentSections(): BelongsToMany
     {
-        return $this->morphOne(User::class, 'userable');
+        return $this->belongsToMany(StudentSection::class, 'student_sections');
+    }
+
+    public function StudentCourses(): BelongsToMany
+    {
+        return $this->belongsToMany(StudentCourse::class, 'student_courses');
     }
 }

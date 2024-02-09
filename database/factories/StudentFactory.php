@@ -18,7 +18,10 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), // Crée un utilisateur Student
+            'name' => $this->faker->name(),
+            'surname' => $this->faker->word(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->word(),
         ];
     }
 }

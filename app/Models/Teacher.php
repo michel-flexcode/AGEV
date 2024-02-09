@@ -11,16 +11,14 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 class Teacher extends Model
 {
     use HasFactory;
-    protected $model = User::class;
 
     protected $fillable = [
-        'user_id',
+        'name',
+        'surname',
+        'phone',
+        'email',
     ];
 
-    public function user(): MorphOne
-    {
-        return $this->morphOne(User::class, 'userable');
-    }
 
     public function specialities(): BelongsToMany
     {
