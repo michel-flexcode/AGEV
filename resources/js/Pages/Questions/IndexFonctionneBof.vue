@@ -71,10 +71,24 @@ const closeModal = () => {
                                 >
                                     Supprimer
                                 </button>
+
+                                <button
+                                    @click.prevent="
+                                        confirmQuestionDeletion(question.id)
+                                    "
+                                    class="btn btn-outline-danger"
+                                >
+                                    Supprimer
+                                </button>
                             </li>
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div class="mt-4">
+                <Link :href="route('questions.create')"
+                    >Créer une nouvelle question</Link
+                >
             </div>
         </div>
     </AppLayout>
