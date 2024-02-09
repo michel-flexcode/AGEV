@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +43,8 @@ Route::middleware([
     })->name('Evaluation');
 
     Route::resource('/questions', QuestionController::class);
+    Route::resource('/teachers', TeacherController::class);
+
     Route::get('questions/delete/{question}', [QuestionController::class, 'deletetest']);
+
 });
