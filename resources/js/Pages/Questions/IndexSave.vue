@@ -1,14 +1,8 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Link, router, useForm } from "@inertiajs/vue3";
-import ActionMessage from "@/Components/ActionMessage.vue";
-import FormSection from "@/Components/FormSection.vue";
-import InputError from "@/Components/InputError.vue";
-import InputLabel from "@/Components/InputLabel.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import DangerButton from "@/Components/DangerButton.vue";
-import TextInput from "@/Components/TextInput.vue";
 import DialogModal from "@/Components/DialogModal.vue";
 import { ref } from "vue";
 
@@ -54,41 +48,38 @@ const closeModal = () => {
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        <ul>
-                            <li
-                                v-for="question in questions"
-                                :key="question.id"
-                            >
-                                {{ question.label }}
+                <ul class="bg-white rounded-lg overflow-hidden divide-y-2">
+                    <li
+                        class="p-4"
+                        v-for="question in questions"
+                        :key="question.id"
+                    >
+                        <Link :href="route('questions.edit', question)">
+                            {{ question.label }}
+                        </Link>
 
-                                <button
-                                    @click.prevent="
-                                        confirmQuestionDeletion(question.id)
-                                    "
-                                    class="btn btn-outline-danger"
-                                >
-                                    Supprimer
-                                </button>
-
-                                <button
-                                    @click.prevent="
-                                        confirmQuestionDeletion(question.id)
-                                    "
-                                    class="btn btn-outline-danger"
-                                >
-                                    Supprimer
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+                        <button
+                            @click.prevent="
+                                confirmQuestionDeletion(question.id)
+                            "
+                            class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-opacity-50 transition ease-in-out duration-150"
+                        >
+                            Supprimer
+                        </button>
+                        <button
+                            class="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-opacity-50 transition ease-in-out duration-150"
+                        >
+                            <Link :href="route('questions.edit', question)">
+                                Edit
+                            </Link>
+                        </button>
+                    </li>
+                </ul>
+                <div class="mt-4">
+                    <Link :href="route('questions.create')"
+                        >Créer une nouvelle question</Link
+                    >
                 </div>
-            </div>
-            <div class="mt-4">
-                <Link :href="route('questions.create')"
-                    >Créer une nouvelle question</Link
-                >
             </div>
         </div>
     </AppLayout>
