@@ -39,46 +39,58 @@ const closeModal = () => {
 </script>
 
 <template>
-    <AppLayout title="Questions">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Questions
-            </h2>
-        </template>
+    <AppLayout>
+        <div class="bg-gray-100 py-6">
+            <header class="text-center mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800">Questions</h2>
+            </header>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <ul class="bg-white rounded-lg overflow-hidden divide-y-2">
-                    <li
-                        class="p-4"
-                        v-for="question in questions"
-                        :key="question.id"
-                    >
-                        <Link :href="route('questions.edit', question)">
-                            {{ question.label }}
-                        </Link>
-
-                        <button
-                            @click.prevent="
-                                confirmQuestionDeletion(question.id)
-                            "
-                            class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-opacity-50 transition ease-in-out duration-150"
-                        >
-                            Supprimer
-                        </button>
-                        <button
-                            class="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-opacity-50 transition ease-in-out duration-150"
-                        >
-                            <Link :href="route('questions.edit', question)">
-                                Edit
-                            </Link>
-                        </button>
+            <div class="max-w-4xl mx-auto">
+                <ul
+                    class="bg-white rounded-lg shadow overflow-hidden divide-y divide-gray-200"
+                >
+                    <li v-for="question in questions" :key="question.id">
+                        <div class="px-4 py-4 sm:px-6">
+                            <div class="flex items-center justify-between">
+                                <Link :href="route('questions.edit', question)">
+                                    {{ question.label }}
+                                </Link>
+                                <div class="space-x-4">
+                                    <button
+                                        @click.prevent="
+                                            confirmQuestionDeletion(question.id)
+                                        "
+                                        class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-opacity-50 transition ease-in-out duration-150"
+                                    >
+                                        Supprimer
+                                    </button>
+                                    <button
+                                        class="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-opacity-50 transition ease-in-out duration-150"
+                                    >
+                                        <Link
+                                            :href="
+                                                route(
+                                                    'questions.edit',
+                                                    question
+                                                )
+                                            "
+                                        >
+                                            Edit
+                                        </Link>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
-                <div class="mt-4">
-                    <Link :href="route('questions.create')"
-                        >Créer une nouvelle question</Link
+
+                <div class="mt-6 text-center">
+                    <Link
+                        class="text-white bg-blue-500 px-4 py-2 font-semibold rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 ease-in-out"
+                        :href="route('questions.create')"
                     >
+                        Créer une nouvelle question
+                    </Link>
                 </div>
             </div>
         </div>
